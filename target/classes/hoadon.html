@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+    <link rel="stylesheet" type="text/css" media="all" href="hoadon.css"/>
+</head>
+
+<body>
+<main>
+    <header>
+        <img src="logo_green.png" alt="" width="150px"/>
+    </header>
+
+    <div class="title">
+        HÓA ĐƠN BÁN LẺ
+    </div>
+    <div>
+        Thời gian in: [[${thoiGian}]]<br/>
+        Số phiếu: [[${maHD}]]<br/>
+        Nhân viên: [[${nguoiBan}]]<br/>
+        Khách hàng: [[${tenKH}]]<br/>
+        SĐT: [[${soDienThoai}]]
+    </div>
+    <br/>
+
+    <table>
+        <thead>
+        <tr>
+            <th class="border center">Tên SP</th>
+            <th class="border center">HSD</th>
+            <th class="border center">Đơn giá</th> <!-- Giữ nguyên tiêu đề cột -->
+            <th class="border center">SL</th>
+            <th class="border center">Thành tiền</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="ct: ${cthd}">
+			<td class="border" th:text="${ct.chiTiet != null ? (ct.chiTiet.sanPham != null ? ct.chiTiet.sanPham.ten : 'Sản phẩm null') : 'Chi tiết null'}"></td>
+
+            <td class="border" th:text="${ct.chiTiet.hanSuDung}"></td>
+            <td class="border" th:text="${ct.giaban}"></td> <!-- Lấy dữ liệu từ phần trăm -->
+            <td class="border" th:text="${ct.soLuong}"></td>
+            <td class="border" th:text="${ct.giaban * ct.soLuong}"></td> <!-- Giữ lại công thức tính thành tiền -->
+        </tr>
+        </tbody>
+        <tr>
+            <td colspan="4" class="right border-left border-right"><b>TỔNG:</b></td>
+            <td class="right border-right"><b>[[${tongTien}]]</b></td>
+        </tr>
+
+        <tr>
+            <td colspan="4" class="right border-left border-right border-bottom">ĐIỂM TÍCH LŨY:</td>
+            <td class="right border-right border-bottom">[[${diemTichLuy}]]</td>
+        </tr>
+    </table>
+    <br/>
+
+    <div>
+        Khi khách hàng có bất kỳ vấn đề nào về sản phẩm, khách hàng có thể liên hệ và đổi trả trong vòng 30 ngày. Vui lòng mang theo hóa đơn.<br/>
+        <b>Cảm ơn quý khách hàng đã mua thuốc tại Farmacia.</b>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+    <link rel="stylesheet" type="text/css" media="all" href="phieunhap.css"/>
+  </head>
+  
+  <body>
+    <main>
+      <header>
+        <table>
+          <tr>
+          <td>
+            <img src="logo_green.png" alt="" width="150px"/>
+          </td>
+          <td style="text-align: right;" class="top">
+            Số phiếu: [[${soPhieu}]]
+          </td>
+          </tr>
+        </table>
+      </header>
+
+      <div class="title">
+        PHIẾU NHẬP SẢN PHẨM
+      </div>
+      <div class="center">
+        Thời gian in: [[${thoiGian}]]
+      </div>
+      <br/>
+      
+      <table>
+        <thead>
+          <tr>
+            <th class="border center">Mã SP</th>
+            <th class="border center">Lô SX</th>
+            <th class="border center">Giá nhập</th>
+			<th class="border center">Phần trăm</th>
+            <th class="border center">Số lượng</th>
+            <th class="border center">Ngày SX</th>
+            <th class="border center">Hạn SD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="ct: ${ctsp}">
+            <td class="border" th:text="${ct.chiTiet.maSanPham}"></td>
+            <td class="border" th:text="${ct.chiTiet.loSanXuat}"></td>
+            <td class="border" th:text="${ct.giaNhap}"></td>
+			<td class="border" th:text="${ct.phantram}"></td>
+            <td class="border" th:text="${ct.soLuong}"></td>
+            <td class="border" th:text="${ct.chiTiet.ngaySanXuat}"></td>
+            <td class="border" th:text="${ct.chiTiet.hanSuDung}"></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td><b>TỔNG THANH TOÁN:</b></td>
+            <td><b>[[${tongTien}]]</b></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+
+      <br/>
+      <table>
+        <tr>
+          <td width="10%"></td>
+          <td width="35%" class="center top">
+              <b><i>Nhà cung cấp</i></b>
+          </td>
+          <td width="10%"></td>
+          <td width="35%" class="center">
+            <div>
+              <b><i>Người lập đơn</i></b>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <i>[[${nguoiLap}]]</i>
+            </div>
+          </td>
+          <td width="10%"></td>
+        </tr>
+      </table>
+    </main>
+  </body>
+</html>
